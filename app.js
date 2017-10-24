@@ -16,3 +16,11 @@ app.directive("myDirective", function() {
     };
     return directiveObject;
 })
+
+
+app.directive("myOtherDirective", function() {
+    var directiveObject = {
+        templateUrl: "template.html"
+    };
+    return directiveObject;
+})
