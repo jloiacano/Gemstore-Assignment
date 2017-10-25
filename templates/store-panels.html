@@ -1,0 +1,11 @@
+<section ng-init="SelectTab(1)">
+    <ul class="nav nav-pills">
+        <li ng-class="{active:tab === 1}"><a ng-click="SelectTab(1)" href>Description</a></li>
+        <li ng-class="{active:tab === 2}"><a ng-click="SelectTab(2)" href>Specifications</a></li>
+        <li ng-class="{active:tab === 3}"><a ng-click="SelectTab(3)" href>Reviews</a></li>
+    </ul>
+</section>
+<blockquote ng-show="tab ===1">{{model.description}} </blockquote>
+<blockquote ng-show="tab ===2">TODO: Specification </blockquote>
+<div store-reviews ng-show="tab === 3">
+</div>
