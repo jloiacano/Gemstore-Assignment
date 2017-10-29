@@ -1,24 +1,31 @@
 <div class="reviews">
     <!--Existing Reviews-->
     <h2>Reviews</h2>
-    <blockquote ng-repeat="review in model.reviews">
-        <p class="reviewStars"> <span ng-show="review.stars >= 5" class="glyphicon glyphicon-star"></span> <span ng-show="review.stars >= 4" class="glyphicon glyphicon-star"></span> <span ng-show="review.stars >= 3" class="glyphicon glyphicon-star"></span> <span ng-show="review.stars >= 2" class="glyphicon glyphicon-star"></span> <span ng-show="review.stars >= 1" class="glyphicon glyphicon-star"></span> </p>
-        <p>{{review.body}}</p> <cite class="pull-right">{{review.author}}</cite>
-    </blockquote>
+    <div class="row" ng-repeat="review in model.reviews">
+        <div class="col-xs-4">
+            <img ng-init="GenerateAvatarUrl(review)" ng-src="{{review.avatarUrl}}" />
+        </div>
+        <div class="col-xs-8">
+            <blockquote>
+                <p style="color:gold"> <span ng-show="review.stars >= 5" class="glyphicon glyphicon-star"></span> <span ng-show="review.stars >= 4" class="glyphicon glyphicon-star"></span> <span ng-show="review.stars >= 3" class="glyphicon glyphicon-star"></span> <span ng-show="review.stars >= 2" class="glyphicon glyphicon-star"></span> <span ng-show="review.stars >= 1" class="glyphicon glyphicon-star"></span> </p>
+                <p>{{review.body}}</p> <cite class="pull-right">{{review.author}}</cite>
+            </blockquote>
+        </div>
+    </div>
     <!--New Review-->
     <h2>Add Your Review</h2>
-    <form name="reviewForm" ng-submit="AddReview(model)" novalidate >
+    <form name="reviewForm" ng-submit="AddReview(model)" novalidate>
 
         <div class="alert alert-danger" ng-show="FormInvalid()">
             Please correct the errors below
         </div>
         <blockquote>
             <p style="color:gold"> <span ng-show="newReview.stars >= 5" class="glyphicon glyphicon-star"></span> <span ng-show="newReview.stars >= 4" class="glyphicon glyphicon-star"></span> <span ng-show="newReview.stars >= 3" class="glyphicon glyphicon-star"></span> <span ng-show="newReview.stars >= 2" class="glyphicon glyphicon-star"></span> <span ng-show="newReview.stars >= 1" class="glyphicon glyphicon-star"></span> </p>
-        <p>{{newReview.body}}</p> <cite class="pull-right">{{newReview.author}}</cite>
+            <p>{{newReview.body}}</p> <cite class="pull-right">{{newReview.author}}</cite>
         </blockquote>
         <div class="form-group" ng-class="{'has-error': StarsInvalid()}">
             <label for="stars" class="control-label">Rating</label>
-            <select class="form-control" name="stars" ng-model="newReview.stars"  required>
+            <select class="form-control" name="stars" ng-model="newReview.stars" required>
                 <option value="">Please rate</option>
                 <option value="1">1 star</option>
                 <option value="2">2 stars</option>
@@ -31,7 +38,7 @@
         </div>
         <div class="form-group" ng-class="{'has-error': BodyInvalid()}">
             <label for="body" class="control-label">Review</label>
-            <textarea class="form-control"  name="body" ng-model="newReview.body" required></textarea >
+            <textarea class="form-control" name="body" ng-model="newReview.body" required></textarea >
             <span class="help-block" ng-show="BodyInvalid()" >Review is required</span>
         </div>
         <div class="form-group" ng-class="{'has-error': AuthorInvalid()}">

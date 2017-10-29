@@ -1,0 +1,16 @@
+<div class="row" ng-controller="myController" ng-init="Initialized()">
+    <div class="col-xs-4" ng-repeat="model in models">
+        <div>
+            <div class="panel panel-default" ng-show="model.canPurchase">
+                <div class="panel-heading"> {{model.name}} </div>
+                <div class="panel-body">
+                    <p class="pull-right"> {{model.price | currency}} </p>
+                    <p> <img class="img-responsive" ng-src="{{model.image}}" /> </p>
+                    <div store-panels> </div>
+                    <button ng-hide="model.outOfStock" class="btn btn-default pull-right">Add to Cart</button>
+                    <button ng-show="model.outOfStock" class="btn btn-danger pull-right" disabled>We're out of Stock!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
